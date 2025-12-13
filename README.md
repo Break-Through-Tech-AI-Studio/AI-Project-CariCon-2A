@@ -1,5 +1,5 @@
 
-# Personality-Based Career Prediction Model  
+# Personality-Based Career Prediction Model - CariCon 2A 
 **AI Studio Final Project – Break Through Tech**
 
 This project explores how natural language processing (NLP) and supervised machine learning can be used to predict personality traits from text data. Using social media posts labeled with Myers-Briggs Type Indicator (MBTI) personality types, we built and evaluated multiple models to understand how linguistic patterns correlate with personality dimensions.
@@ -10,12 +10,12 @@ Our final approach reframes MBTI prediction as four binary classification proble
 
 ## 👥 Team Members
 
-| Name | Affiliation | Role & Contributions |
-|---|---|---|
-| **Joseann Boneo** | New York Institute of Technology |  |
-| **Hodan Ali** | Smith College | |
-| **Trinity Dhillon** | Fordham University |  |
-| **Sumaiyah Rahman** | Columbia University |  |
+| Name | GitHub Handles| Affiliation | Role & Contributions |
+|---|---|---|---|
+| **Joseann Boneo** | | New York Institute of Technology |  |
+| **Hodan Ali** | | Smith College | |
+| **Trinity Dhillon** | | Fordham University |  |
+| **Sumaiyah Rahman** | | Columbia University |  |
 
 ---
 
@@ -31,6 +31,8 @@ Our final approach reframes MBTI prediction as four binary classification proble
 ---
 
 ## 📌 Project Overview
+
+Caricon is a nonprofit organization dedicated to celebrating Caribbean literature, and their motivation for this project was to explore how AI can support more inclusive talent recognition, storytelling, and program matching across the Caribbean diaspora.
 
 This project was completed as part of the **Break Through Tech AI Studio Program**. The challenge focused on building an end-to-end machine learning solution that applies NLP techniques to a real-world problem.
 
