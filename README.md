@@ -12,13 +12,12 @@ Our final approach reframes MBTI prediction as four binary classification proble
 
 | Name | GitHub Handles| Affiliation | Role & Contributions |
 |---|---|---|---|
-| **Joseann Boneo** | | New York Institute of Technology |  |
-| **Hodan Ali** | | Smith College | |
-| **Trinity Dhillon** | | Fordham University |  |
-| **Sumaiyah Rahman** | | Columbia University |  |
+| **Joseann Boneo** | @J-O-S-I-E | New York Institute of Technology | NLP pipline roadmapping, data exploration, EDA, model training results analysis, documentation, feature encoding |
+| **Hodan Ali** | @hodanali7 | Smith College | Data exploration, EDA, results analysis, documentation, model training, visualization |
+| **Trinity Dhillon** | @tdhillon113 | Fordham University | Feature engineering, model training, hyperparameter tuning, performance analysis, results analysis, documentation |
+| **Sumaiyah Rahman** | @sumaiyahr2004 | Columbia University | Data preprocessing, NLP pipeline development, results analysis, documentation, model training, hyperparameter tuning, performance analysis |
 
 ---
-
 ## 🎯 Project Highlights
 
 - Built a **supervised NLP pipeline** to predict MBTI personality traits from text
@@ -68,6 +67,38 @@ To address class imbalance, additional extraverted posts were incorporated to cr
 
 ---
 
+## 🔍 Exploratory Data Analysis (EDA)
+
+Exploratory Data Analysis (EDA) was conducted to understand the structure, quality, and distribution of the MBTI personality dataset prior to modeling. This step was critical for identifying potential biases, data imbalances, and linguistic patterns that could impact model performance.
+
+
+### Key Observations
+- **Post Length Consistency:** Average text length was relatively consistent across MBTI types, reducing concerns about length-based bias.
+- **Subjective Language:** Posts frequently contained introspective, emotional, and opinion-based language, making the dataset suitable for personality inference.
+- **Class Imbalance:** Introverted personality types were overrepresented in the original dataset, which posed a risk of biased predictions.
+
+<p>
+  <img width="1072" height="251" alt="Screenshot 2025-12-14 133626" src="https://github.com/user-attachments/assets/aafbe184-0ee0-4aab-b232-fa827c6212f4" />
+</p>
+
+### Dataset Balancing
+To address imbalance, additional extraverted posts were incorporated into the dataset. After augmentation:
+- The distribution across MBTI types became more balanced
+- Extraverted types (e.g., ENFP, ESTP, ESFJ) gained stronger representation
+- Newly added posts exhibited more action-oriented language and shorter sentence structures
+<p>
+  <img width="972" height="299" alt="Screenshot 2025-12-14 133636" src="https://github.com/user-attachments/assets/a17a5b07-7a82-41e8-a267-d8419c4d3832" />
+</p>
+
+### Impact on Modeling
+EDA insights directly informed downstream decisions:
+- Motivated the shift from **16-class classification** to **binary classification by MBTI axis**
+- Influenced feature engineering choices, including the use of **word- and character-level TF-IDF**
+- Helped identify **Intuition vs. Sensing (N/S)** as the most challenging dimension to predict due to subtle linguistic differences
+
+
+---
+
 ## 🧹 Data Preprocessing
 
 Key preprocessing steps included:
@@ -92,27 +123,54 @@ Key preprocessing steps included:
   - `ngram_range = (1,3)`
   - `min_df = 5`
 
-Combining word and character features allowed the models to capture both semantic meaning and stylistic patterns in text.
+---
+
+## 🤖 Models Used & Technical Approach
+
+### Model Development: Method Selection & Justification
+We approached personality prediction as a **supervised text classification problem**. Initial experimentation with direct **16-class MBTI classification** resulted in poor performance due to high class complexity and overlapping linguistic features. Based on insights from EDA, we reframed the task into **four independent binary classification problems** (I/E, N/S, T/F, J/P), which significantly reduced complexity and improved predictive accuracy.
+
+The following models and tools were selected due to their strong performance on high-dimensional text data and interpretability:
+
+- **TF-IDF Vectorization**: Converts text into numerical feature representations while preserving important word and character patterns.
+- **Logistic Regression**: Used as a baseline model due to its simplicity, interpretability, and efficiency.
+- **Linear Support Vector Machine (SVM)**: Chosen for its ability to handle sparse, high-dimensional feature spaces common in NLP tasks.
+- **Word + Character-Level TF-IDF**: Combined to capture both semantic meaning and stylistic writing patterns linked to personality traits.
 
 ---
 
-## 🤖 Models Used
+### Technical Architecture & Training Pipeline
+The modeling pipeline followed a modular, end-to-end machine learning workflow:
 
-### Baseline
-- **Logistic Regression + TF-IDF**
-  - ~77% accuracy on I/E, T/F, J/P
-  - Lower performance on N/S (~57%)
+1. **Text Preprocessing**
+   - Removal of URLs, emojis, special characters, and stopwords
+   - Text normalization (lowercasing and spacing)
+2. **Feature Engineering**
+   - Word-level TF-IDF vectorization
+   - Character-level TF-IDF vectorization
+   - One-hot encoding of personality labels
+3. **Model Training**
+   - Baseline: Logistic Regression + TF-IDF
+   - Advanced: Linear SVM + Word TF-IDF
+   - Optimized: Linear SVM + Word + Character TF-IDF
+4. **Evaluation**
+   - Accuracy and Macro-F1 score
+   - Comparison across personality axes
+   - Performance benchmarking against baseline models
 
-### Advanced Models
-- **Linear SVM + Word TF-IDF**
-- **Linear SVM + Word + Character TF-IDF** (Best Model)
-
-### Key Insight
-Direct 16-class MBTI prediction performed poorly. Treating MBTI as **four binary classification tasks** significantly improved accuracy and robustness.
+All models were trained and evaluated using **scikit-learn**, with consistent train/test splits to ensure fair comparisons.
 
 ---
 
 ## 📈 Results
+
+| Model | Task | Key Results |
+|---|---|---|
+| Logistic Regression + TF-IDF | Binary Axes | ~77% accuracy on I/E, T/F, J/P; lower on N/S |
+| Linear SVM + Word TF-IDF | Binary Axes | ~78% accuracy overall |
+| **Linear SVM + Word + Char TF-IDF** | **Binary Axes** | **Up to ~82% accuracy**, highest Macro-F1 |
+
+#### Linear SVM + Word + Char TF-IDF Results
 
 | Axis | Best Accuracy |
 |---|---|
@@ -121,9 +179,17 @@ Direct 16-class MBTI prediction performed poorly. Treating MBTI as **four binary
 | J / P | ~80% |
 | N / S | ~66% |
 
-- Binary classifiers consistently outperformed 16-class models
-- Macro-F1 scores improved with richer feature representations
-- N/S remains the most challenging dimension to predict
+
+#### Key Insights
+- **Binary classification consistently outperformed 16-class prediction**
+- Word + character-level features significantly improved performance
+- N/S remained the most difficult axis due to subtle contextual cues
+- Macro-F1 scores improved with richer feature representations, indicating more balanced class performance
+
+---
+
+### Baseline Comparison
+The Logistic Regression + TF-IDF model served as a baseline. While effective for simpler axes, it struggled with nuanced personality dimensions. The optimized SVM model demonstrated clear performance gains across all evaluated metrics, validating the chosen architecture and training strategy.
 
 ---
 
@@ -145,12 +211,25 @@ Direct 16-class MBTI prediction performed poorly. Treating MBTI as **four binary
 
 ---
 
+## 💡 Code Highlights
+
+The project is developed primarily in a **Jupyter Notebook**, which serves as the central environment for experimentation, analysis, and documentation. The notebook is organized into clearly labeled sections that follow the end-to-end machine learning lifecycle, enabling transparency and reproducibility.
+
+In addition to the Jupyter Notebook, **GitHub is used for version control and collaboration**. The repository tracks incremental changes to code, documentation, and experiments, enabling efficient teamwork, maintaining a clear development history, and ensuring reproducibility of results. GitHub also serves as the central hub for project documentation, including the README and dependency specifications.
+
+---
+
 ## 🛠️ Setup & Installation
 
 ### Requirements
-- Python 3.8+
+To run this project locally, ensure you have the following installed:
+- Python 3.8 or higher
 - Jupyter Notebook
 
-### Install Dependencies
+### Installation
+Install all required Python dependencies using the provided `requirements.txt` file:
+
 ```bash
 pip install -r requirements.txt
+
+
