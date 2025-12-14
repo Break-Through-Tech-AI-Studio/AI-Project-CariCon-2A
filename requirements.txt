@@ -1,0 +1,11 @@
+numpy
+pandas
+matplotlib
+seaborn
+nltk
+scikit-learn
+joblib
+openpyxl
+torch
+sentence-transformers
+gensim
