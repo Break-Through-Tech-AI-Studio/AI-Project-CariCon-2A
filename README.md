@@ -1,4 +1,4 @@
-# Personality-Based Career Prediction Model (Caricon 2A) 
+# MBTI Personality Prediction Model (Caricon 2A) 
 **AI Studio Final Project – Break Through Tech**
 
 This project explores how natural language processing (NLP) and supervised machine learning can be used to predict personality traits from text data. Using social media posts labeled with Myers-Briggs Type Indicator (MBTI) personality types, we built and evaluated multiple models to understand how linguistic patterns correlate with personality dimensions.
