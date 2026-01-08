@@ -1,4 +1,4 @@
-# Personality-Based Career Prediction Model - CariCon 2A 
+# Personality-Based Career Prediction Model (CariCon 2A) 
 **AI Studio Final Project – Break Through Tech**
 
 This project explores how natural language processing (NLP) and supervised machine learning can be used to predict personality traits from text data. Using social media posts labeled with Myers-Briggs Type Indicator (MBTI) personality types, we built and evaluated multiple models to understand how linguistic patterns correlate with personality dimensions.
@@ -17,7 +17,7 @@ Our final approach reframes MBTI prediction as four binary classification proble
 | **Sumaiyah Rahman** | @sumaiyahr2004 | Columbia University | Data preprocessing, NLP pipeline development, results analysis, documentation, model training, hyperparameter tuning, performance analysis |
 
 ---
-## 🎯 Project Highlights
+## Project Highlights
 
 - Built a **supervised NLP pipeline** to predict MBTI personality traits from text
 - Compared **16-class classification vs. binary classification approaches**
@@ -28,14 +28,14 @@ Our final approach reframes MBTI prediction as four binary classification proble
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 Caricon is a nonprofit organization dedicated to celebrating Caribbean literature, and their motivation for this project was to explore how AI can support more inclusive talent recognition, storytelling, and program matching across the Caribbean diaspora.
 
 This project was completed as part of the **Break Through Tech AI Studio Program**. The challenge focused on building an end-to-end machine learning solution that applies NLP techniques to a real-world problem.
 
 ### Problem Statement
-Can we accurately predict personality traits from written text using machine learning?
+How can we accurately predict personality traits from written text using machine learning?
 
 ### Objective
 - Develop a predictive model for MBTI personality traits
@@ -43,7 +43,7 @@ Can we accurately predict personality traits from written text using machine lea
 - Evaluate multiple machine learning models
 - Analyze trade-offs between model complexity, accuracy, and interpretability
 
-### Real-World Significance
+### Business Impact
 Accurate personality prediction models can support:
 - Improved career and talent matching
 - Program placement and personalization
@@ -52,7 +52,7 @@ Accurate personality prediction models can support:
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 **Source:** Myers-Briggs Personality Dataset  
 - ~8,675 user-generated text posts  
@@ -66,7 +66,7 @@ To address class imbalance, additional extraverted posts were incorporated to cr
 
 ---
 
-## 🔍 Exploratory Data Analysis (EDA)
+## Exploratory Data Analysis (EDA)
 
 Exploratory Data Analysis (EDA) was conducted to understand the structure, quality, and distribution of the MBTI personality dataset prior to modeling. This step was critical for identifying potential biases, data imbalances, and linguistic patterns that could impact model performance.
 
@@ -98,7 +98,7 @@ EDA insights directly informed downstream decisions:
 
 ---
 
-## 🧹 Data Preprocessing
+## Data Preprocessing
 
 Key preprocessing steps included:
 - Removal of URLs, emojis, special characters, and stopwords
@@ -113,7 +113,7 @@ Key preprocessing steps included:
 
 ---
 
-## 🧠 Feature Engineering
+## Feature Engineering
 
 - **TF-IDF Vectorization**
   - Word-level TF-IDF
@@ -124,7 +124,7 @@ Key preprocessing steps included:
 
 ---
 
-## 🤖 Models Used & Technical Approach
+## Models Used & Technical Approach
 
 ### Model Development: Method Selection & Justification
 We approached personality prediction as a **supervised text classification problem**. Initial experimentation with direct **16-class MBTI classification** resulted in poor performance due to high class complexity and overlapping linguistic features. Based on insights from EDA, we reframed the task into **four independent binary classification problems** (I/E, N/S, T/F, J/P), which significantly reduced complexity and improved predictive accuracy.
@@ -161,7 +161,7 @@ All models were trained and evaluated using **scikit-learn**, with consistent tr
 
 ---
 
-## 📈 Results
+## Results
 
 | Model | Task | Key Results |
 |---|---|---|
@@ -192,7 +192,7 @@ The Logistic Regression + TF-IDF model served as a baseline. While effective for
 
 ---
 
-## ⚠️ Challenges & Limitations
+## Limitations
 
 - Subtle linguistic differences make N/S classification difficult
 - Personality prediction from text raises ethical and fairness concerns
@@ -200,7 +200,7 @@ The Logistic Regression + TF-IDF model served as a baseline. While effective for
 
 ---
 
-## 🔮 Next Steps
+## Next Steps
 
 - Experiment with **Transformer-based models** (e.g., RoBERTa)
 - Improve contextual understanding for N/S prediction
@@ -210,7 +210,7 @@ The Logistic Regression + TF-IDF model served as a baseline. While effective for
 
 ---
 
-## 💡 Code Highlights
+## Code Highlights
 
 The project is developed primarily in a **Jupyter Notebook**, which serves as the central environment for experimentation, analysis, and documentation. The notebook is organized into clearly labeled sections that follow the end-to-end machine learning lifecycle, enabling transparency and reproducibility.
 
