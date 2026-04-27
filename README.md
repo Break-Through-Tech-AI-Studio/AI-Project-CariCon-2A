@@ -13,7 +13,7 @@ Our final approach reframes MBTI prediction as four binary classification proble
 |---|---|---|---|
 | **Joseann Boneo** | @J-O-S-I-E | New York Institute of Technology | NLP pipline roadmapping, data exploration, EDA, model training results analysis, documentation, feature encoding |
 | **Hodan Ali** | @hodanali7 | Smith College | Data exploration, EDA, results analysis, documentation, model training, visualization |
-| **Trinity Dhillon** | @tdhillon113 | Fordham University | Feature engineering, model training, hyperparameter tuning, performance analysis, results analysis, documentation |
+| **Trinity Dhillon** | @tdhillon113 | Hofstra University | Feature engineering, model training, hyperparameter tuning, performance analysis, results analysis, documentation |
 | **Sumaiyah Rahman** | @sumaiyahr2004 | Columbia University | Data preprocessing, NLP pipeline development, results analysis, documentation, model training, hyperparameter tuning, performance analysis |
 
 ---
